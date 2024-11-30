@@ -35,11 +35,13 @@
         blu {
             bindings = <&to 3>;
             key-positions = <14 15 13>;
+            layers = <0 1 2 3>;
         };
 
         base {
             bindings = <&to 0>;
             key-positions = <25 26 27>;
+            layers = <0 1 2 3>;
         };
     };
 
