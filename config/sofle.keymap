@@ -33,8 +33,13 @@
         compatible = "zmk,combos";
 
         blu {
-            bindings = <&mo 3>;
+            bindings = <&to 3>;
             key-positions = <14 15 13>;
+        };
+
+        base {
+            bindings = <&to 0>;
+            key-positions = <25 26 27>;
         };
     };
 
