@@ -35,6 +35,7 @@
         home {
             bindings = <&to 0>;
             key-positions = <27 28 29>;
+            layers = <0 1 2 3 4>;
         };
     };
 
