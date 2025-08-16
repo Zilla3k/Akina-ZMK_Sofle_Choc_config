@@ -15,6 +15,30 @@
 	};
 };
 
+&spi1 {
+    compatible = "nordic,nrf-spim";
+    status = "okay";
+    sck-pin = <2>;
+    mosi-pin = <3>;
+    miso-pin = <4>;
+
+    pmw3610: pmw3610@0 {
+        compatible = "pixart,pmw3610";
+        reg = <0>;               /* Chip Select */
+        cs-gpios = <&gpio0 5 GPIO_ACTIVE_LOW>;
+        irq-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+        label = "PMW3610";
+    };
+};
+
+&pinctrl {
+    spi1_default: spi1_default {
+        group1 {
+            psels = <NRF_SPI1_SCK>, <NRF_SPI1_MOSI>, <NRF_SPI1_MISO>;
+        };
+    };
+};
+
 &spi3 {
 	compatible = "nordic,nrf-spim";
 	status = "okay";
