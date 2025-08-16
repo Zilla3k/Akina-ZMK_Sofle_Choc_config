@@ -29,10 +29,9 @@
 
     conditional_layers { compatible = "zmk,conditional-layers"; };
 
-    behaviors {
-        pointing: pointing {
-            compatible = "zmk,behavior-pointing-move";
-        };
+    trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball_split>;
     };
 
     combos {
