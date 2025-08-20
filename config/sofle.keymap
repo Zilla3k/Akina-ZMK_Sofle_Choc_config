@@ -22,15 +22,8 @@
     chain-length = <29>; // Sofle Using All LEDs
 };
 
-/ {
+& {
     conditional_layers { compatible = "zmk,conditional-layers"; };
-
-    // Define o trackball para o listener
-    trackball_split: trackball@0 {
-        compatible = "zmk,trackball";
-        label = "TRACKBALL";
-        movement-cpi = <1200>; // Exemplo de CPI, ajuste se necessário
-    };
 
     trackball_listener {
         compatible = "zmk,input-listener";
@@ -64,14 +57,11 @@
 &kp TAB         &kp Q   &kp W           &kp E         &kp R         &kp T                                      &kp Y   &kp U      &kp I         &kp O          &kp P     &kp DELETE
 &kp LEFT_SHIFT  &kp A   &kp S           &kp D         &kp F         &kp G                                      &kp H   &kp J      &kp K         &kp L          &kp SEMI  &kp SQT
 &kp LCTRL       &kp Z   &kp X           &kp C         &kp V         &kp B      &kp C_MUTE    &kp C_PLAY_PAUSE  &kp N   &kp M      &kp COMMA     &kp DOT        &kp FSLH  &kp LSHFT
-                        &lt 3 CAPSLOCK  &kp LEFT_WIN  &kp LEFT_ALT  &mo LOWER  &kp SPACE     &kp ENTER         &mo 2   &kp RCTRL  &kp RC(LEFT)  &kp RC(RIGHT)
+                        &lt 3 CAPSLOCK  &kp LEFT_WIN  &kp LEFT_ALT  &mo LOWER  &kp SPACE     &kp ENTER         &mo RAISE   &kp RCTRL  &kp RC(LEFT)  &kp RC(RIGHT)
             >;
 
             // Trackball movimento e scroll
-            sensor-bindings =
-                <&pointing_move_x>,
-                <&pointing_move_y>,
-                <&pointing_scroll>;
+            sensor-bindings = <&trackball_split>;
         };
 
         lower_layer {
@@ -85,10 +75,7 @@
                       &trans     &trans    &trans    &trans     &trans    &trans  &trans     &trans    &trans     &trans
             >;
 
-            sensor-bindings =
-                <&pointing_move_x>,
-                <&pointing_move_y>,
-                <&pointing_scroll>;
+            sensor-bindings = <&trackball_split>;
         };
 
         raise_layer {
@@ -102,10 +89,7 @@
                           &trans        &trans        &trans        &trans        &trans    &trans  &trans     &trans          &trans            &trans
             >;
 
-            sensor-bindings =
-                <&pointing_move_x>,
-                <&pointing_move_y>,
-                <&pointing_scroll>;
+            sensor-bindings = <&trackball_split>;
         };
 
         adjust_layer {
@@ -115,9 +99,11 @@
 &none  &none            &none            &kp D            &bt BT_PRV       &bt BT_NXT                       &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &none  &none
 &none  &none            &none            &kp C            &bt BT_CLR       &bt BT_CLR_ALL                   &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &rgb_ug RGB_HUD  &none            &none  &none
 &none  &rgb_ug RGB_EFF  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_SPI  &rgb_ug RGB_BRI                  &none            &none            &none            &none            &none  &none
-&none  &rgb_ug RGB_EFR  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_SPD  &rgb_ug RGB_BRD  &trackball_cpi_inc   &trackball_cpi_dec   &none      &none            &none            &none            &none
-                        &none            &none            &none            &none            &none    &none      &none            &none            &none            &none
+&none  &rgb_ug RGB_EFR  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_SPD  &rgb_ug RGB_BRD  &trackball_cpi_inc   &trackball_cpi_dec   &none      &none            &none            &none            &none  &none
+                        &none            &none            &none            &none            &none    &none      &none            &none            &none
             >;
+
+            sensor-bindings = <&trackball_split>;
         };
 
         cs {
@@ -130,6 +116,7 @@
             >;
 
             label = "cs";
+            sensor-bindings = <&trackball_split>;
         };
     };
 };
