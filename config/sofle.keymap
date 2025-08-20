@@ -25,6 +25,13 @@
 / {
     conditional_layers { compatible = "zmk,conditional-layers"; };
 
+    // Define o trackball para o listener
+    trackball_split: trackball@0 {
+        compatible = "zmk,trackball";
+        label = "TRACKBALL";
+        movement-cpi = <1200>; // Exemplo de CPI, ajuste se necessário
+    };
+
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_split>;
@@ -108,7 +115,7 @@
 &none  &none            &none            &kp D            &bt BT_PRV       &bt BT_NXT                       &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &none  &none
 &none  &none            &none            &kp C            &bt BT_CLR       &bt BT_CLR_ALL                   &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &rgb_ug RGB_HUD  &none            &none  &none
 &none  &rgb_ug RGB_EFF  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_SPI  &rgb_ug RGB_BRI                  &none            &none            &none            &none            &none  &none
-&none  &rgb_ug RGB_EFR  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_SPD  &rgb_ug RGB_BRD  &trackball_cpi_inc   &trackball_cpi_dec   &none      &none            &none            &none            &none  &none
+&none  &rgb_ug RGB_EFR  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_SPD  &rgb_ug RGB_BRD  &trackball_cpi_inc   &trackball_cpi_dec   &none      &none            &none            &none            &none
                         &none            &none            &none            &none            &none    &none      &none            &none            &none            &none
             >;
         };
